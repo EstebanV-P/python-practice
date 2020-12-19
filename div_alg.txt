@@ -1,0 +1,27 @@
+# In this program, the objective is to implement the Euclid's division algorithm.
+
+recall that the division algorithm takes two integers (a, b) and outputs the quotient and remainder (q, r). 
+That is, "a" can be written in the form:
+
+1) (a = bq + r). Where (0 <= r < b) .
+
+
+If the inputs are integers, there are four possibilities:
+
+1. b = 0, We then raise an exception of ZeroDivisionError. 
+
+2. (b > a), we have a = 0b + a. And output (q, r) = (0, a).  
+-----------------------------------------------------------
+
+3. if (a, b) are both positive or both negative, the result is positive, and we calculate the div alg using only the absolute values, and the unsigned_div_alg function.
+
+In this case we use 1) to write (r = a - bq). and while r >= b, we add one to the quotient (This means number fits one more time).
+Finally we return (q, r). This loop ends because a, b are positive, and r is decreasing as we increase q.
+
+
+4. if (a < 0) or (b < 0). We then calculate the algorithm using the negative of the absolute value of a, and the absolute value of b, all inside the signed_div_alg function.
+
+We also use (r = a - bq), but now we loop while r < 0 (r >= 0 is a must). 
+
+We start with (q = 0) and subtract 1 to it repeatedly. This loop ends because now (a < 0) and (b > 0), when we subtract to the quotient, we make ( -bq) -which is positive- greater.  
+This means r is increasing at each iteration, and we stop at the first positive r we find.
